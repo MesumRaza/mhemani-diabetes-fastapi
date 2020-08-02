@@ -6,6 +6,9 @@ from sklearn.externals import joblib
 
 import pandas as pd
 
+from ratelimit import limits
+
+
 app = FastAPI()
 
 # Use pickle to load in the pre-trained model
@@ -17,6 +20,9 @@ def read_root():
 	return {"DIABETES PREDICTION": "FAST API"}
 
 
+SECONDS = 60
+
+@limits(calls=5, period=SECONDS)
 @app.get("/api_diabetes/")
 def predict(payload:str):
 	#print(payload)
