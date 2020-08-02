@@ -22,8 +22,8 @@ def read_root():
 
 SECONDS = 60
 
-@limits(calls=5, period=SECONDS)
 @app.get("/api_diabetes/")
+@limits(calls=5, period=SECONDS)
 def predict(payload:str):
 	#print(payload)
 	values = [float(i) for i in payload.split(',')]
