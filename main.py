@@ -35,6 +35,6 @@ def predict(payload:str):
 	prediction_proba = model.predict_proba(input_variables)[0][1]
 	#print("Probabilities: ", prediction_proba)
 
-	ret = '{"prediction":' + str(float(prediction)) +","+ '"prediction_proba":' + str(float(prediction_proba))	+ '}'
+	ret = {"prediction":float(prediction)),"prediction_proba":(float(prediction_proba))}
 
 	return ret
